@@ -62,8 +62,20 @@ public:
     {
         Person::displayData(); // scope
         cout << "\EMPLOYEE INFORMATION \n";
-        cout << "GENDER : " << gender << endl;
+        cout << "EMP ID : " << empID << endl;
         cout << "SALARY : " << salary << endl;
+    }
+};
+
+class PartEmployee : public Employee
+{
+private:
+    int numOfDays;
+    int dailyWages;
+
+public:
+    PartEmployee(int numOfDays, int dailyWages)
+    {
     }
 };
 int main()
