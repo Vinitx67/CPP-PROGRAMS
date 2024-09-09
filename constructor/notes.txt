@@ -1,0 +1,14 @@
+1. Constructor is used to create the object.
+2. Constructor is a special function.
+3. It has no return type.
+4. It has same name as of class name.
+5. The access modifier of constructor should always public.
+6. If we don’t write constructor compiler will create a default constructor.
+7. As soon as object is created constructor is invoked/called.
+8. Two or more constructor with the same name in the same class is called as constructor overloading.
+9. There are 3 types of constructor:
+a. Default Constructor:
+   i. It is used to set the default values.
+b. Parameterized Constructor: It is used to set the values pass by users.
+c. Copy Constructor.
+
