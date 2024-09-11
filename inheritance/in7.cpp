@@ -25,20 +25,15 @@ public:
         this->age = age;
         this->gender = gender;
     }
-    // METHODS
-    void displayData()
-    {
-        cout << "\nPERSON INFORMATION \n";
-        cout << "EMPLOYEE NAME : " << empName << endl;
-        cout << "AGE : " << age << endl;
-        cout << "GENDER : " << gender << endl;
-    }
+
+    virtual void displayData() = 0;
+    virtual void calculateSalary() = 0;
 };
 
 class Employee : public Person // SINGLE LEVEL INHERITANCE
 {
     // ACCESS MODIFIER
-private:
+protected:
     // FIELDS
     int empID;
     double salary;
@@ -56,12 +51,27 @@ public:
         this->empID = empID;
         this->salary = salary;
     }
-    // METHODS
+
+    void calculateSalary()
+    {
+        if (salary >= 15000)
+        {
+            cout << "10% TDS DEDUCTED !!! \n";
+            salary = salary - 0.1 * salary;
+        }
+        else
+        {
+            cout << "NO TDS DEDUCTED !!! \n";
+        }
+    }
     // FUNCTION OVERRIDING : 2 OR MORE FUNCTION WITH SAME NAME ONE IN BASE CLASS AND ONE IN DERIVED CLASS IS CALLED AS FUNCTION OVERLOADING
     void displayData()
     {
-        Person::displayData(); // scope
-        cout << "\EMPLOYEE INFORMATION \n";
+
+        cout << "n\EMPLOYEE INFORMATION \n";
+        cout << "NAME : " << empName << endl;
+        cout << "AGE : " << age << endl;
+        cout << "GENDER : " << gender << endl;
         cout << "EMP ID : " << empID << endl;
         cout << "SALARY : " << salary << endl;
     }
@@ -70,19 +80,39 @@ public:
 class PartEmployee : public Employee
 {
 private:
+    double dailyWages;
     int numOfDays;
-    int dailyWages;
 
 public:
-    PartEmployee(int numOfDays, int dailyWages)
+    PartEmployee()
     {
+        cout << "DEFAULT CONSTRUCTOR OF PART EMPLOYEE CLASS\n";
+    }
+    PartEmployee(string empName, int age, string gender, int empID, int numOfDays, double dailyWages) : Employee(empName, age, gender, empID, numOfDays * dailyWages)
+    {
+        cout << "PARAMETERIZED CONSTRUCTOR OF PART EMPLOYEE CLASS\n";
+        this->numOfDays = numOfDays;
+        this->dailyWages = dailyWages;
+    }
+
+    void displayData()
+    {
+        cout << "\nPART EMPLOYEE INFORMATION \n";
+        cout << "DAILY WAGES : " << dailyWages << endl;
+        cout << "NUMBER OF DAYS : " << numOfDays << endl;
+    }
+
+    void calculateSalary()
+    {
+        cout << "NO TDS DETECTED\n";
     }
 };
 int main()
 {
     // DATA_TYPE VARIABLE_NAME;
-    Employee emp1("VINIT", 21, "MALE", 1001, 55000); // REFRENCE VARIABLE OF TYPE PERSON
-    emp1.displayData();
+    PartEmployee pt1("VINIT", 21, "MALE", 1001, 50, 2000); // REFRENCE VARIABLE OF TYPE PERSON
+    pt1.calculateSalary();
+    pt1.displayData();
 
     return 0;
 }
