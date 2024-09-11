@@ -68,7 +68,7 @@ public:
     void displayData()
     {
 
-        cout << "n\EMPLOYEE INFORMATION \n";
+        cout << "\nEMPLOYEE INFORMATION \n";
         cout << "NAME : " << empName << endl;
         cout << "AGE : " << age << endl;
         cout << "GENDER : " << gender << endl;
@@ -97,6 +97,7 @@ public:
 
     void displayData()
     {
+        Employee::displayData();
         cout << "\nPART EMPLOYEE INFORMATION \n";
         cout << "DAILY WAGES : " << dailyWages << endl;
         cout << "NUMBER OF DAYS : " << numOfDays << endl;
