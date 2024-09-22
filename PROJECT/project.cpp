@@ -61,7 +61,7 @@ public:
         this->name = name;
     }
 
-    void setIndexNum(int IndexNum)
+    void setIndexNum(int indexNum)
     {
         this->indexNum = indexNum;
     }
@@ -159,4 +159,8 @@ int main()
     bank.depositAmount(3000, 1002);
     cout << "FINDING ACCOUNTS BY ACCOUNT NUMBER : \n";
     bank.getAccountByAccNum(1002).displayData();
+
+    bank.depositAmount(2000, 1000);
+    cout << "FINDING ACCOUNTS BY ACCOUNT NUMBER : \n";
+    bank.getAccountByAccNum(1001).displayData();
 }
