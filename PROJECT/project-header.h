@@ -170,11 +170,9 @@ public:
 
     void transferAmount(int fromAccountNumber, int toAccountNumber, double amount)
     {
-        // Retrieve the accounts for both the sender and the receiver
         Account fromAccount = getAccountByAccNum(fromAccountNumber);
         Account toAccount = getAccountByAccNum(toAccountNumber);
 
-        // Check if both accounts exist
         if (fromAccount.getIndexNum() == -1)
         {
             cout << "SOURCE ACCOUNT WITH ACCOUNT NUMBER " << fromAccountNumber << " DOESN'T EXISTS !!!\n";
@@ -184,14 +182,11 @@ public:
             cout << "DESTINATION ACCOUNT WITH ACCOUNT NUMBER " << toAccountNumber << " DOESN'T EXISTS !!!\n";
         }
 
-        // Check if there is enough balance in the source account
         if (fromAccount.getBalance() - amount >= MIN_BALANCE)
         {
-            // Perform the transfer: debit from source, credit to destination
             fromAccount.withdraw(amount);
             toAccount.deposit(amount);
 
-            // Update the accounts in the array
             accounts[fromAccount.getIndexNum()] = fromAccount;
             accounts[toAccount.getIndexNum()] = toAccount;
 
